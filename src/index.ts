@@ -24,6 +24,8 @@ export default function useIDBState<T>(
 
       if (value !== undefined) {
         setState(value);
+      } else if (state !== undefined) {
+        set(key, state, customStore);
       }
 
       setLoading(false);
