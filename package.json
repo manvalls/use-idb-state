@@ -1,6 +1,6 @@
 {
   "name": "use-idb-state",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "useState backed by IndexedDB",
   "main": "lib/index.js",
   "sideEffects": false,
