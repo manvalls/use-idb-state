@@ -1,0 +1,35 @@
+{
+  "name": "use-idb-state",
+  "version": "0.0.1",
+  "description": "useState backed by IndexedDB",
+  "main": "lib/index.js",
+  "sideEffects": false,
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manvalls/use-idb-state.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manvalls/use-idb-state/issues"
+  },
+  "homepage": "https://github.com/manvalls/use-idb-state#readme",
+  "peerDependencies": {
+    "@types/react": ">16.0.0",
+    "react": ">16.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "idb-keyval": "^6.2.1"
+  }
+}
