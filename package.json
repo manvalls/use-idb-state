@@ -8,7 +8,7 @@
     "lib/**/*"
   ],
   "scripts": {
-    "build": "tsc",
+    "prepare": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
