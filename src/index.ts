@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { UseStore, get, set, del } from "idb-keyval";
 
-// key is expected to remain constant across renders
 export default function useIDBState<T>(
-  key: string,
+  key: IDBValidKey,
   initialValue: T | (() => T),
   customStore?: UseStore
 ) {
   const [state, setState] = useState<T>(initialValue);
   const [loading, setLoading] = useState(true);
+  const [currentKey, setCurrentKey] = useState(key);
 
   useEffect(() => {
     let mounted = true;
@@ -17,6 +17,7 @@ export default function useIDBState<T>(
       return;
     }
 
+    setLoading(true);
     get<T>(key, customStore).then((value) => {
       if (!mounted) {
         return;
@@ -29,12 +30,13 @@ export default function useIDBState<T>(
       }
 
       setLoading(false);
+      setCurrentKey(key);
     });
 
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [key]);
 
   useEffect(() => {
     if (loading) {
@@ -42,12 +44,12 @@ export default function useIDBState<T>(
     }
 
     if (state === undefined) {
-      del(key, customStore);
+      del(currentKey, customStore);
       return;
     }
 
-    set(key, state, customStore);
-  }, [state, loading]);
+    set(currentKey, state, customStore);
+  }, [currentKey, state, loading]);
 
   return [state, setState, loading] as const;
 }
